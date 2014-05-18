@@ -1,0 +1,15 @@
+<launch>
+  <node
+      pkg="camera1394stereo"
+      type="camera1394stereo_node"
+      name="camera1394stereo_node"
+      output="screen" >
+    <param name="video_mode" value="format7_mode3" />
+    <param name="format7_color_coding" value="raw16" />
+    <param name="bayer_pattern" value="grbg" />
+    <param name="bayer_method" value="Simple" />
+    <param name="stereo_method" value="Interlaced" />
+    <param name="camera_info_url_left" value="file://$(find taurus_bumblebee)/config/00b09d0100caf13c_left.yaml" />
+    <param name="camera_info_url_right" value="file://$(find taurus_bumblebee)/config/00b09d0100caf13c_right.yaml" />
+  </node>
+</launch>

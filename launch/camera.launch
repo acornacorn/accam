@@ -1,0 +1,40 @@
+<launch>
+  <!-- ARGUMENTS
+        camdir      - directory in config/ with camera info
+        stereo      - true for stereo.  False for mono (left only)
+        view_left   - true to show left raw camera view
+        view_right  - true to show right raw camera view
+
+        NOTE: camera topic is
+              stereo_camera/left/image_raw
+              stereo_camera/right/image_raw
+  -->
+  <arg name="camdir" default="cam_usb1"/>
+  <arg name="stereo" default="true"/>
+  <arg name="view_left" default="true"/>
+  <arg name="view_right" default="true"/>
+
+  <include file="$(find accam)/config/$(arg camdir)/cam.launch.xml">
+    <arg name="camdir" value="$(arg camdir)"/>
+    <arg name="stereo" value="$(arg stereo)"/>
+  </include>
+
+  <node
+      if="$(arg view_left)"
+      pkg="image_view"
+      type="image_view"
+      name="image_view_left">
+    <remap from="image" to="stereo_camera/left/image_raw" />
+  </node>
+
+  <group if="$(arg stereo)">
+  <node
+      if="$(arg view_right)"
+      pkg="image_view"
+      type="image_view"
+      name="image_view_right">
+    <remap from="image" to="stereo_camera/right/image_raw" />
+  </node>
+  </group>
+
+</launch>

@@ -1,0 +1,1 @@
+KERNEL=="fw*", GROUP="video", MODE="0664"

@@ -1,0 +1,40 @@
+<launch>
+  <!-- See launch/camera.launch for description of arguments -->
+  <arg name="camdir" default="cam_usb12"/>
+  <arg name="stereo" default="true"/>
+
+  <node
+      pkg="usb_cam"
+      type="usb_cam_node"
+      name="left"
+      ns="stereo_camera"
+      output="screen" >
+    <param name="video_device" value="/dev/video1" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="stereo_camera" />
+    <param name="io_method" value="mmap"/>
+    <param name="camera_name" value="left" />
+    <param name="camera_info_url"
+        value="file://$(find accam)/config/$(arg camdir)/left.yaml" />
+  </node>
+
+  <node
+      pkg="usb_cam"
+      type="usb_cam_node"
+      name="right"
+      ns="stereo_camera"
+      output="screen" >
+    <param name="video_device" value="/dev/video2" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="stereo_camera" />
+    <param name="io_method" value="mmap"/>
+    <param name="camera_name" value="right" />
+    <param name="camera_info_url"
+        value="file://$(find accam)/config/$(arg camdir)/right.yaml" />
+  </node>
+</launch>
+

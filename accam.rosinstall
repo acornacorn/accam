@@ -1,0 +1,6 @@
+- git: {local-name: camera1394stereo, uri: 'https://github.com/srv/camera1394stereo.git', version: hydro-devel}
+- git: {local-name: geometric_shapes, uri: 'https://github.com/ros-planning/geometric_shapes.git', version: hydro-devel}
+- git: {local-name: image_pipeline, uri: 'https://github.com/ros-perception/image_pipeline', version: hydro-devel}
+- git: {local-name: object_recognition_msgs, uri: 'git@github.com:wg-perception/object_recognition_msgs.git', version: master}
+- git: {local-name: usb_cam, uri: 'https://github.com/bosch-ros-pkg/usb_cam.git', version: hydro-devel}
+- git: {local-name: view_controller_msgs, uri: 'git@github.com:ros-visualization/view_controller_msgs.git', version: hydro-devel}
